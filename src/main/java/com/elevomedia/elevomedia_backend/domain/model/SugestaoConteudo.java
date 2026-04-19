@@ -47,6 +47,15 @@ public class SugestaoConteudo {
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
+    public void atualizarCom(SugestaoConteudo dados) {
+        if (dados.getTituloData() != null) this.tituloData = dados.getTituloData();
+        if (dados.getLegenda() != null) this.legenda = dados.getLegenda();
+        if (dados.getHashtags() != null) this.hashtags = dados.getHashtags();
+        if (dados.getChamadaAcao() != null) this.chamadaAcao = dados.getChamadaAcao();
+        if (dados.getRoteiroVideo() != null) this.roteiroVideo = dados.getRoteiroVideo();
+        if (dados.getDataPublicacao() != null) this.dataPublicacao = dados.getDataPublicacao();
+    }
+
     @PrePersist
     private void prePersist() {
         criadoEm = LocalDateTime.now();

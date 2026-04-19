@@ -82,6 +82,10 @@ public class Cliente {
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
+    public Cliente(Long id) {
+        this.id = id;
+    }
+
     public void atualizarCom(Cliente dados) {
         if (dados.getNomeNegocio() != null) this.nomeNegocio = dados.getNomeNegocio();
         if (dados.getSegmento() != null) this.segmento = dados.getSegmento();

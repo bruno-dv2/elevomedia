@@ -44,6 +44,10 @@ public class Planejamento {
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
+    public Planejamento(Long id) {
+        this.id = id;
+    }
+
     @PrePersist
     private void prePersist() {
         criadoEm = LocalDateTime.now();
