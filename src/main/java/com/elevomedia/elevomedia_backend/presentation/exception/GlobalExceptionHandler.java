@@ -1,6 +1,7 @@
 package com.elevomedia.elevomedia_backend.presentation.exception;
 
 import com.elevomedia.elevomedia_backend.domain.exception.ConflitoException;
+import com.elevomedia.elevomedia_backend.domain.exception.CredenciaisInvalidasException;
 import com.elevomedia.elevomedia_backend.domain.exception.NaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErroResponse> handleConflito(ConflitoException ex) {
         ErroResponse erro = new ErroResponse(409, ex.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    }
+
+    @ExceptionHandler(CredenciaisInvalidasException.class)
+    public ResponseEntity<ErroResponse> handleCredenciaisInvalidas(CredenciaisInvalidasException ex) {
+        ErroResponse erro = new ErroResponse(401, ex.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(erro);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

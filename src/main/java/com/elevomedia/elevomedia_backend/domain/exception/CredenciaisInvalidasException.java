@@ -1,0 +1,8 @@
+package com.elevomedia.elevomedia_backend.domain.exception;
+
+public class CredenciaisInvalidasException extends RuntimeException {
+
+    public CredenciaisInvalidasException(String mensagem) {
+        super(mensagem);
+    }
+}
